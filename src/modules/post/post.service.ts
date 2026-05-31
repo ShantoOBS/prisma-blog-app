@@ -5,7 +5,7 @@ import { CommentStatus } from "../../../generated/prisma/enums";
 
 const createPost = async (data: Omit<Post, 'id' | 'createdAt' | 'updatedAt' | 'authorId'>, userId: string) => {
 
-    try {
+
         const result = await prisma.post.create({
             data: {
                 ...data,
@@ -15,12 +15,7 @@ const createPost = async (data: Omit<Post, 'id' | 'createdAt' | 'updatedAt' | 'a
 
         return result;
 
-    } catch (e) {
-        return {
-            message: "Post creation failed",
-            details: e
-        };
-    }
+    
 }
 
 const getAllPost = async ({
